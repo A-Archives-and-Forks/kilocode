@@ -16,9 +16,7 @@ export function MaxCostInput({ allowedMaxCost, onValueChange, className }: MaxCo
 	const handleInput = useCallback(
 		(e: any) => {
 			const input = e.target as HTMLInputElement
-			// Allow numbers and decimal point
 			input.value = input.value.replace(/[^0-9.]/g, "")
-			// Ensure only one decimal point
 			const parts = input.value.split(".")
 			if (parts.length > 2) {
 				input.value = parts[0] + "." + parts.slice(1).join("")

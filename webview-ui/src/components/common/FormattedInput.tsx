@@ -42,12 +42,10 @@ export function FormattedInput<T>({
 		(e: any) => {
 			const input = e.target as HTMLInputElement
 
-			// Apply input filtering if provided
 			if (formatter.filter) {
 				input.value = formatter.filter(input.value)
 			}
 
-			// Parse the input value
 			const parsedValue = formatter.parse(input.value)
 			onValueChange(parsedValue)
 		},
@@ -80,20 +78,8 @@ export const integerFormatter: InputFormatter<number> = {
 	filter: (input: string) => input.replace(/[^0-9]/g, ""),
 }
 
-export const positiveIntegerFormatter: InputFormatter<number> = {
-	parse: (input: string) => {
-		const value = parseInt(input)
-		return !isNaN(value) && value > 0 ? value : undefined
-	},
-	format: (value: number | undefined) => {
-		return value?.toString() || ""
-	},
-	filter: (input: string) => input.replace(/[^0-9]/g, ""),
-}
-
 export const currencyFormatter: InputFormatter<number> = {
 	parse: (input: string) => {
-		// Remove currency symbols and parse as float
 		const cleanInput = input.replace(/[$,]/g, "")
 		const value = parseFloat(cleanInput)
 		return !isNaN(value) && value >= 0 ? value : undefined
@@ -103,19 +89,17 @@ export const currencyFormatter: InputFormatter<number> = {
 		return value.toFixed(2)
 	},
 	filter: (input: string) => {
-		// Allow digits, decimal point, and common currency symbols
 		return input.replace(/[^0-9.$,]/g, "")
 	},
 }
 
 export const unlimitedIntegerFormatter: InputFormatter<number> = {
 	parse: (input: string) => {
-		if (input.trim() === "") return undefined // Represents unlimited/infinity
+		if (input.trim() === "") return undefined
 		const value = parseInt(input)
 		return !isNaN(value) && value > 0 ? value : undefined
 	},
 	format: (value: number | undefined) => {
-		// Handle infinity case - if value is undefined or Infinity, show empty
 		return value === undefined || value === Infinity ? "" : value.toString()
 	},
 	filter: (input: string) => input.replace(/[^0-9]/g, ""),

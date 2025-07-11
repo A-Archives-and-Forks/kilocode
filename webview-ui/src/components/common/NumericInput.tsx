@@ -1,6 +1,6 @@
 // kilocode_change - new file
 import { useCallback } from "react"
-import { FormattedInput, positiveIntegerFormatter, InputFormatter } from "./FormattedInput"
+import { FormattedInput, integerFormatter, InputFormatter } from "./FormattedInput"
 
 interface NumericInputProps {
 	value?: number | undefined
@@ -18,7 +18,7 @@ interface NumericInputProps {
 export function NumericInput({
 	value,
 	onValueChange,
-	formatter = positiveIntegerFormatter,
+	formatter = integerFormatter,
 	placeholder,
 	className,
 	style,
