@@ -2,7 +2,7 @@ import path, { resolve } from "path"
 import fs from "fs"
 import { execSync } from "child_process"
 
-import { defineConfig, type PluginOption, type Plugin, loadEnv } from "vite"
+import { defineConfig, type PluginOption, type Plugin } from "vite"
 import react from "@vitejs/plugin-react"
 import tailwindcss from "@tailwindcss/vite"
 
@@ -52,9 +52,6 @@ const persistPortPlugin = (): Plugin => ({
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
 	let outDir = "../src/webview-ui/build"
-
-	// Load env file based on `mode` in the current working directory.
-	const env = loadEnv(mode, process.cwd(), "")
 
 	const pkg = JSON.parse(fs.readFileSync(path.join(__dirname, "..", "src", "package.json"), "utf8"))
 	const gitSha = getGitSha()

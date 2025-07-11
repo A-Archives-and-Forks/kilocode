@@ -9,14 +9,6 @@ export function getKiloCodeBackendSignInUrl(uriScheme: string = "vscode", uiKind
 	// Check window first (runtime from extension), then process.env (build-time from Vite)
 	const baseUrl = window.KILOCODE_BASE_URL || process.env.KILOCODE_BASE_URL || "https://kilocode.ai"
 	const source = uiKind === "Web" ? "web" : uriScheme
-	console.log(
-		"getKiloCodeBackendSignInUrl - baseUrl:",
-		baseUrl,
-		"window:",
-		window.KILOCODE_BASE_URL,
-		"process.env:",
-		process.env.KILOCODE_BASE_URL,
-	)
 	return `${baseUrl}/sign-in-to-editor?source=${source}`
 }
 
@@ -24,13 +16,5 @@ export function getKiloCodeBackendSignUpUrl(uriScheme: string = "vscode", uiKind
 	// Check window first (runtime from extension), then process.env (build-time from Vite)
 	const baseUrl = window.KILOCODE_BASE_URL || process.env.KILOCODE_BASE_URL || "https://kilocode.ai"
 	const source = uiKind === "Web" ? "web" : uriScheme
-	console.log(
-		"getKiloCodeBackendSignUpUrl - baseUrl:",
-		baseUrl,
-		"window:",
-		window.KILOCODE_BASE_URL,
-		"process.env:",
-		process.env.KILOCODE_BASE_URL,
-	)
 	return `${baseUrl}/users/sign_up?source=${source}`
 }
