@@ -6,6 +6,13 @@ import { useAppTranslation } from "@/i18n/TranslationContext"
 import { getKiloCodeBackendSignInUrl, getKiloCodeBackendSignUpUrl } from "../helpers"
 import { useExtensionState } from "@/context/ExtensionStateContext"
 
+// Declare the window property to avoid TypeScript errors
+declare global {
+	interface Window {
+		KILOCODE_BASE_URL?: string
+	}
+}
+
 interface KiloCodeAuthProps {
 	onManualConfigClick?: () => void
 	className?: string
@@ -19,7 +26,11 @@ const KiloCodeAuth: React.FC<KiloCodeAuthProps> = ({ onManualConfigClick, classN
 	return (
 		<div className={`flex flex-col items-center ${className}`}>
 			<Logo />
-
+			<div style={{ background: "red", color: "white", padding: "10px", margin: "10px" }}>
+				DEBUG: window.KILOCODE_BASE_URL = {JSON.stringify(window.KILOCODE_BASE_URL)}
+				<br />
+				DEBUG: process.env.KILOCODE_BASE_URL = {JSON.stringify(process.env.KILOCODE_BASE_URL)}
+			</div>
 			<h2 className="m-0 p-0 mb-4">{t("kilocode:welcome.greeting")}</h2>
 			<p className="text-center mb-2">{t("kilocode:welcome.introText1")}</p>
 			<p className="text-center mb-2">{t("kilocode:welcome.introText2")}</p>
