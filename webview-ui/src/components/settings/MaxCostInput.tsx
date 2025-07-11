@@ -1,11 +1,10 @@
-// kilocode_change - new file
 import { VSCodeTextField } from "@vscode/webview-ui-toolkit/react"
 import { useTranslation } from "react-i18next"
 import { vscode } from "@/utils/vscode"
 import { useCallback } from "react"
 
 interface MaxCostInputProps {
-	allowedMaxCost?: number | undefined
+	allowedMaxCost?: number
 	onValueChange: (value: number | undefined) => void
 	className?: string
 }

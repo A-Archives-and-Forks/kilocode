@@ -10,8 +10,8 @@ import { SetCachedStateField } from "./types"
 import { SectionHeader } from "./SectionHeader"
 import { Section } from "./Section"
 import { AutoApproveToggle } from "./AutoApproveToggle"
-import { MaxRequestsInput } from "./MaxRequestsInput" // kilocode_change
-import { MaxCostInput } from "./MaxCostInput" // kilocode_change
+import { MaxRequestsInput } from "./MaxRequestsInput"
+import { MaxCostInput } from "./MaxCostInput"
 
 type AutoApproveSettingsProps = HTMLAttributes<HTMLDivElement> & {
 	alwaysAllowReadOnly?: boolean

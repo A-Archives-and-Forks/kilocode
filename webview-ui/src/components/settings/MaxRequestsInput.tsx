@@ -1,11 +1,10 @@
-// kilocode_change - new file
 import { useTranslation } from "react-i18next"
 import { vscode } from "@/utils/vscode"
 import { useCallback } from "react"
 import { FormattedInput, unlimitedIntegerFormatter } from "../common/FormattedInput"
 
 interface MaxRequestsInputProps {
-	allowedMaxRequests?: number | undefined
+	allowedMaxRequests?: number
 	onValueChange: (value: number | undefined) => void
 	className?: string
 }
