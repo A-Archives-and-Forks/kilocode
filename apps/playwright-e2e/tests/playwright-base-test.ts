@@ -4,7 +4,7 @@ import * as path from "path"
 import * as os from "os"
 import * as fs from "fs"
 import { fileURLToPath } from "url"
-import { camelCase } from "lodash"
+import { camelCase } from "change-case"
 import { setupConsoleLogging, cleanLogMessage } from "../helpers/console-logging"
 
 // ES module equivalent of __dirname
@@ -158,7 +158,7 @@ export const test = base.extend<TestFixtures>({
 			const testInfo = test.info()
 			// Extract test suite from the test file name or use a default
 			const fileName = testInfo.file.split("/").pop()?.replace(".test.ts", "") || "unknown"
-			const testSuite = camelCase(fileName).join(" ")
+			const testSuite = camelCase(fileName)
 			const testName = testInfo.title || "Unknown Test"
 
 			// Create a hierarchical name: TestSuite__TestName__ScreenshotName
