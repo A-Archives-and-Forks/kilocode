@@ -11,6 +11,7 @@ import { SectionHeader } from "./SectionHeader"
 import { Section } from "./Section"
 import { AutoApproveToggle } from "./AutoApproveToggle"
 import { MaxRequestsInput } from "./MaxRequestsInput" // kilocode_change
+import { MaxCostInput } from "./MaxCostInput" // kilocode_change
 
 type AutoApproveSettingsProps = HTMLAttributes<HTMLDivElement> & {
 	alwaysAllowReadOnly?: boolean
@@ -30,6 +31,7 @@ type AutoApproveSettingsProps = HTMLAttributes<HTMLDivElement> & {
 	followupAutoApproveTimeoutMs?: number
 	allowedCommands?: string[]
 	allowedMaxRequests?: number | undefined // kilocode_change
+	allowedMaxCost?: number | undefined // kilocode_change
 	showAutoApproveMenu?: boolean // kilocode_change
 	setCachedStateField: SetCachedStateField<
 		| "alwaysAllowReadOnly"
@@ -49,6 +51,7 @@ type AutoApproveSettingsProps = HTMLAttributes<HTMLDivElement> & {
 		| "followupAutoApproveTimeoutMs"
 		| "allowedCommands"
 		| "allowedMaxRequests" // kilocode_change
+		| "allowedMaxCost" // kilocode_change
 		| "showAutoApproveMenu" // kilocode_change
 	>
 }
@@ -71,6 +74,7 @@ export const AutoApproveSettings = ({
 	followupAutoApproveTimeoutMs = 60000,
 	allowedCommands,
 	allowedMaxRequests, // kilocode_change
+	allowedMaxCost, // kilocode_change
 	showAutoApproveMenu, // kilocode_change
 	setCachedStateField,
 	...props
@@ -131,6 +135,10 @@ export const AutoApproveSettings = ({
 				<MaxRequestsInput
 					allowedMaxRequests={allowedMaxRequests}
 					onValueChange={(value) => setCachedStateField("allowedMaxRequests", value)}
+				/>
+				<MaxCostInput
+					allowedMaxCost={allowedMaxCost}
+					onValueChange={(value) => setCachedStateField("allowedMaxCost", value)}
 				/>
 				{/* kilocode_change end */}
 

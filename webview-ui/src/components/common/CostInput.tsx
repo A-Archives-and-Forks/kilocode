@@ -1,5 +1,4 @@
 // kilocode_change - new file
-import { useTranslation } from "react-i18next"
 import { useCallback } from "react"
 import { FormattedInput, currencyFormatter } from "./FormattedInput"
 
@@ -26,8 +25,6 @@ export function CostInput({
 	description,
 	icon = "codicon-credit-card",
 }: CostInputProps) {
-	const { t } = useTranslation()
-
 	const handleValueChange = useCallback(
 		(newValue: number | undefined) => {
 			onValueChange(newValue)
