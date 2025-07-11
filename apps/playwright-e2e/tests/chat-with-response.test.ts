@@ -23,10 +23,10 @@ test.describe("Full E2E Test", () => {
 
 		await chatInput.fill("Fill in the blanks for this phrase: 'hello w_r_d'")
 		await takeScreenshot("chat-prompt-entered")
-		await chatInput.press("Enter")
 
 		// Don't take any more screenshots after the reponse starts-
 		// llm responses aren't deterministic any capturing the reponse would cause screenshot flakes
-		await waitForWebviewText(page, "Task Completed", 30_000)
+		await chatInput.press("Enter")
+		await waitForWebviewText(page, "hello world", 30_000)
 	})
 })
